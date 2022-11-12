@@ -1,60 +1,219 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Image Slider</title>
-    <style>
-      body {
-        margin: 10px auto;
-        text-align: center;
-      }
-      .content {
-        max-width: 800px;
-        text-align: left;
-        margin: auto;
-      }
-      .simple-ss {
-        width: 800px;
-        height: 250px;
-        background-color: #eeeeee;
-        margin: auto;
-        background-image: url("/uploads/media/default/0001/03/5bfad15a7fd24d448a48605baf52655a5bbe5a71.jpeg");
-        animation-name: slide;
-        animation-duration: 10s;
-        animation-direction: normal;
-        animation-timing-function: ease;
-        animation-iteration-count: infinite;
-      }
-      @keyframes slide {
-        0% {
-          background-position: 0 0;
-        }
-        16.66% {
-          background-position: 0 0;
-        }
-        33.32% {
-          background-position: -800px 0;
-        }
-        49.98% {
-          background-position: -800px 0;
-        }
-        66.64% {
-          background-position: -1600px 0;
-        }
-        83.30% {
-          background-position: -1600px 0;
-        }
-        100% {
-          background-position: 0 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="simple-ss"></div>
-    <div class="content">
-      <p>
-        This is a proof-of-concept for a slideshow that doesn't use any Javascript. It does not have pages or left/right buttons etc.
-      </p>
-    </div>
-  </body>
+<!DOCTYPE html> 
+
+<html> 
+
+      
+
+<head> 
+
+    <title> 
+
+        19-1210 extern
+    </title> 
+
+      
+
+    <link href =  
+"https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+
+            rel = "stylesheet"> 
+
+      
+
+    <script src =  
+
+"https://code.jquery.com/jquery-1.10.2.js"> 
+
+    </script> 
+
+      
+
+    <script src =  
+
+"https://code.jquery.com/ui/1.10.4/jquery-ui.js"> 
+
+    </script> 
+
+          
+
+    <style> 
+
+  
+
+        /* text align for the body */ 
+
+        body { 
+
+            text-align: center; 
+
+        } 
+
+  
+
+        /* image dimension */ 
+
+        img{ 
+
+            height: 200px; 
+
+            width: 350px; 
+
+        } 
+
+  
+
+        /* imagelistId styling */ 
+
+        #imageListId 
+
+        {  
+
+        margin: 0;  
+
+        padding: 0; 
+
+        list-style-type: none; 
+
+        } 
+
+        #imageListId div 
+
+        {  
+
+            margin: 0 4px 4px 4px; 
+
+            padding: 0.4em;              
+
+            display: inline-block; 
+
+        } 
+
+  
+
+        /* Output order styling */ 
+
+        #outputvalues{ 
+
+        margin: 0 2px 2px 2px; 
+
+        padding: 0.4em;  
+
+        padding-left: 1.5em; 
+
+        width: 250px; 
+
+        border: 2px solid dark-green;  
+
+        background : gray; 
+
+        } 
+
+        .listitemClass  
+
+        { 
+
+            border: 1px solid #006400;  
+
+            width: 350px;      
+
+        } 
+
+        .height{  
+
+            height: 10px; 
+
+        } 
+
+    </style> 
+
+          
+
+    <script> 
+
+        $(function() { 
+
+            $( "#imageListId" ).sortable({ 
+
+            update: function(event, ui) { 
+
+                getIdsOfImages(); 
+
+            }//end update          
+
+            }); 
+
+        }); 
+
+          
+
+        function getIdsOfImages() { 
+
+            var values = []; 
+
+            $('.listitemClass').each(function (index) { 
+
+                values.push($(this).attr("id") 
+
+                        .replace("imageNo", "")); 
+
+            }); 
+
+              
+
+            $('#outputvalues').val(values); 
+
+        } 
+
+    </script> 
+
+</head> 
+
+      
+
+<body> 
+
+    <h1 style="color:green">GeeksforGeeks</h1> 
+
+      
+
+    <b>Drag and drop using jQuery UI Sortable</b> 
+
+      
+
+    <div class="height"></div><br> 
+
+      
+
+    <div id = "imageListId"> 
+
+        <div id="imageNo1" class = "listitemClass"> 
+
+            <img src="ext1.jpg" alt=""> 
+
+        </div> 
+
+          
+
+        <div id="imageNo2" class = "listitemClass"> 
+
+            <img src="Ext2.jpg" alt=""> 
+
+        </div>
+
+    </div> 
+
+          
+
+    <div id="outputDiv"> 
+
+        <b>Output of ID's of images : </b> 
+
+        <input id="outputvalues" type="text" value="" /> 
+
+    </div> 
+
+</body> 
+
+  
+
 </html>
